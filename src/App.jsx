@@ -74,8 +74,47 @@ function Home({ navigate }) {
   </section>
 }
 
+function Biodata({ nama, umur, domisili, keahlian }) {
+  return <dl className="biodata-card" aria-label="Biodata Jeremy Alfie">
+    <div><dt>Nama</dt><dd>{nama}</dd></div>
+    <div><dt>Umur</dt><dd>{umur}</dd></div>
+    <div><dt>Domisili</dt><dd>{domisili}</dd></div>
+    <div><dt>Keahlian</dt><dd>{keahlian}</dd></div>
+  </dl>
+}
+function biodata({ nama, umur, domisili, keahlian }) {
+  return (
+    <div className="biodata-card">
+      <span className="eyebrow">Biodata</span>
+
+      <div className="biodata-row">
+        <span>Nama</span>
+        <strong>{nama}</strong>
+      </div>
+
+      <div className="biodata-row">
+        <span>Umur</span>
+        <strong>{umur} tahun</strong>
+      </div>
+
+      <div className="biodata-row">
+        <span>Domisili</span>
+        <strong>{domisili}</strong>
+      </div>
+
+      <div className="biodata-row biodata-skills">
+        <span>Keahlian</span>
+        <div>
+          {keahlian.map((item) => (
+            <small key={item}>{item}</small>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 function About({ navigate }) {
-  return <section className="inner-page about-page" aria-labelledby="about-title"><div className="page-intro"><span className="pill">About me</span><h1 id="about-title">Designing thoughtful <em>digital experiences.</em></h1><p>Saya adalah <strong>Jeremy Alfie</strong>, seorang frontend developer dan UI enthusiast yang suka mengubah ide menjadi website yang rapi, cepat, dan mudah digunakan.</p></div><div className="profile-layout"><div className="profile-orb"><img src={profilePhoto} alt="Foto Jeremy Alfie" /></div><div className="profile-note"><span className="eyebrow">Currently</span><h2>Learning, building, and improving every day.</h2><p>Fokus saya adalah membuat antarmuka yang punya karakter, tetap fungsional, dan nyaman dipakai di semua ukuran layar.</p><button className="text-button" type="button" onClick={() => navigate('skills')}>See my skills <span>↗</span></button></div></div></section>
+  return <section className="inner-page about-page" aria-labelledby="about-title"><div className="page-intro"><span className="pill">About me</span><h1 id="about-title">Designing thoughtful <em>digital experiences.</em></h1><p>Saya adalah <strong>Jeremy Alfie</strong>, seorang frontend developer dan UI enthusiast yang suka mengubah ide menjadi website yang rapi, cepat, dan mudah digunakan.</p></div><div className="profile-layout"><div className="profile-orb"><img src={profilePhoto} alt="Foto Jeremy Alfie" /></div><div className="profile-note"><span className="eyebrow">Currently</span><h2>Learning, building, and improving every day.</h2><p>Fokus saya adalah membuat antarmuka yang punya karakter, tetap fungsional, dan nyaman dipakai di semua ukuran layar.</p><Biodata nama="Jeremy Alfie" umur="20 tahun" domisili="Manado" keahlian="Frontend Development & UI Design" /><button className="text-button" type="button" onClick={() => navigate('skills')}>See my skills <span>↗</span></button></div></div></section>
 }
 
 function Projects({ navigate }) {
